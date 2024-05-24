@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="ticTacToeApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic-Tac-Toe</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.js"></script>
+  <script src="app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .navbar {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 1s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+      margin: 20px auto;
+    }
+    .cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
+      background-color: #fff;
+      border: 1px solid #000;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .cell:hover {
+      background-color: #e0e0e0;
+      transform: scale(1.1);
+    }
+    .cell.disabled {
+      pointer-events: none;
+      background-color: #f0f0f0;
+    }
+    .status {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+    .reset {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .reset:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body ng-controller="TicTacToeController">
+  <div class="navbar">Tic-Tac-Toe Game</div>
+  <div class="container">
+    <h1>Tic-Tac-Toe</h1>
+    <div class="board">
+      <div class="cell" ng-repeat="cell in board track by $index" ng-click="makeMove($index)" ng-class="{'disabled': cell}">
+        {{ cell }}
+      </div>
+    </div>
+    <div class="status">{{ statusMessage }}</div>
+    <button class="reset" ng-click="resetGame()">Reset Game</button>
+  </div>
+  <footer>@imtiyaz</footer>
+</body>
+<script src="app4.js"></script>
+</html>
